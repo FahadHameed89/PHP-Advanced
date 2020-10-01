@@ -19,16 +19,17 @@ if ( !empty( $_GET ) )
         $result = $_GET['value1'] + $_GET['value2'];                
         break;
         case 'subtraction':
-        $result = $_GET['value1'] + $_GET['value2'];
+        $result = $_GET['value1'] - $_GET['value2'];
         break;
         case 'multiplication':
-        $result = $_GET['value1'] + $_GET['value2'];
+        $result = $_GET['value1'] * $_GET['value2'];
         break;
         case 'division':
-        $result = $_GET['value1'] + $_GET['value2'];
+        $result = $_GET['value1'] / $_GET['value2'];
         break;
     }
 }
+var_dump( $result );
 
 ?>
 
