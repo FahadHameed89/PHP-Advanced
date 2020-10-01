@@ -1,4 +1,7 @@
-<?php // Show the Header
+<?php 
+$GLOBALS['pageTitle'] = 'Calc';
+
+// Show the Header
 include './templates/header.php';
 ?>
 
