@@ -9,7 +9,7 @@ include './templates/header.php';
 This is the Calculator Page...!
 </p>
 
-<form>
+<form method="GET">
     <label for="num1">
     Enter First Operand:
     <input 
@@ -17,6 +17,29 @@ This is the Calculator Page...!
     name="value1"
     type="number"
     value="">
+    </label>
+
+    <label for="operator">
+        Select an Operator:
+        <select id="operator" name="op">
+
+            <option value="addition">
+            +
+            </option>
+            
+            <option value="subtraction">
+            -
+            </option>
+            
+            <option value="multiplication">
+            &times;
+            </option>
+            
+            <option value="division">
+            &divide;
+            </option>
+
+        </select>
     </label>
 
     <label for="num2">
@@ -27,6 +50,7 @@ This is the Calculator Page...!
     type="number"
     value="">
     </label>
+    <input type="submit" value="Calculate!">
 </form>
 
 
