@@ -83,6 +83,12 @@ This is the Calculator Page...!
 </form>
 
 
+<?php if ($result != FALSE) : ?>
+    <p>
+    The Result is:
+    <?php echo $result; ?>
+    </p>
+<?php endif; ?>
 
 <?php // Show the Footer
 include './templates/footer.php';?>
