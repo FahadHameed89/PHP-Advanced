@@ -4,10 +4,8 @@
         <li>
             <a href="index.php"> Home</a>
         </li>
-
         <li>
-            <a href="index.php"> Calculator</a>
+            <a href="calc.php"> Calculator</a>
         </li>
-
     </ul>
 </nav>

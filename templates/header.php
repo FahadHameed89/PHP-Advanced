@@ -12,4 +12,5 @@
 
 </head>
 <body>
-    <h1>This is the header section..</h1>
+    <h1>Header</h1>
+    <?php include dirname( __FILE__ ).'/navigation.php'; ?>
