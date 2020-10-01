@@ -8,8 +8,27 @@ include './templates/header.php';
 echo '<pre>';           // Note if we echo '<pre>' we can hold white space 
 var_dump( $_GET );
 var_dump( $_POST );     // POST is handled in a similar fashion.
-
 echo '</pre>';
+
+$result = FALSE;
+if ( !empty( $_GET ) )
+{
+    switch ($_GET['op'])
+    {
+        case 'addition':
+        $result = $_GET['value1'] + $_GET['value2'];                
+        break;
+        case 'subtraction':
+        $result = $_GET['value1'] + $_GET['value2'];
+        break;
+        case 'multiplication':
+        $result = $_GET['value1'] + $_GET['value2'];
+        break;
+        case 'division':
+        $result = $_GET['value1'] + $_GET['value2'];
+        break;
+    }
+}
 
 ?>
 
