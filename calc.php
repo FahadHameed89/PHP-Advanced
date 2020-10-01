@@ -3,7 +3,7 @@ include './templates/header.php';
 ?>
 
 <p> 
-    This is the Body content of the page...!
+This is the Calculator Page...!
 </p>
 
 <?php // Show the Footer
