@@ -1,5 +1,5 @@
 <?php 
-$GLOBALS['pageTitle'] = 'Calc';
+$GLOBALS['pageTitle'] = 'PHP Calculator';
 
 // Show the Header
 include './templates/header.php';
