@@ -1,4 +1,16 @@
 <?php 
+// We need to use SESSION_START to declare to PHP that we want to use the $_SESSION global variable!
+// It sets up a unique identifier for the browser so that only the array of values is associated with only the one user. 
+session_start();
+
+// Make sure to set a default value, if this is a key/value pair does not yet exist in the associate session array. We cannot push using array_push to a NULL, so we convert CalcHistory into an array. 
+
+if ( !isset( $_SESSION['calcHistory'] ) )
+{
+    $_SESSION['calcHistory'] = array();
+}
+
+// Avoid using Globals unless needed...
 $GLOBALS['pageTitle'] = 'PHP Calculator';
 
 // Show the Header
@@ -16,20 +28,35 @@ if ( !empty( $_GET ) )
     switch ($_GET['op'])
     {
         case 'addition':
+        $opSymbol = '+';
         $result = $_GET['value1'] + $_GET['value2'];                
         break;
+
         case 'subtraction':
+        $opSymbol = '-';
         $result = $_GET['value1'] - $_GET['value2'];
         break;
+
         case 'multiplication':
+        $opSymbol = '&times;';
         $result = $_GET['value1'] * $_GET['value2'];
         break;
+
         case 'division':
+        $opSymbol = '&divide;';
         $result = $_GET['value1'] / $_GET['value2'];
         break;
     }
+   array_push( 
+    $_SESSION['calcHistory'], 
+    "{$_GET['value1']} {$opSymbol} {$_GET['value2']} = {$result}" 
+);
+echo '<pre>';
+var_dump( $_SESSION );
+
 }
 var_dump( $result );
+echo '</pre>';
 
 ?>
 
