@@ -1,42 +1,66 @@
-<?php 
+<?php
+class Snack
+{
+  /**
+   * We can set up properties like so...
+   */
+  public $name;
+  public $type;
+  public $price;
+  public $calories;
 
-/**
- * This is the Snack Class - where we will define the properties of each object that is referred to as a snack. 
- */
+  /**
+   * Constructor method runs every time we
+   * make a new instance of this class (a
+   * new object following this blueprint.)
+   */
+  function __construct ( $snackName = '', $snackType = '', $snackPrice = 0.00, $snackCalories = 0 )
+  {
+    $this->name = $snackName;
+    $this->type = $snackType;
+    // For more verbose currency formatting, check out:
+    // https://www.php.net/manual/en/numberformatter.formatcurrency.php
+    // Thanks Fahad!
+    $this->price = number_format(
+      $snackPrice, // Number to format.
+      2, // Number of decimal places.
+      '.', // Decimal separator.
+      ',' // Thousands separator. 1,000.00
+    );
+    $this->calories = ( (integer) $snackCalories ); // Convert $snackCalories to int. // Could instead use intval()
+  }
 
- class Snack 
- {
-     // Declare Properties
-    public $name = '';
-    public $type = '';
-    public $price = 0.00;
-    public $calories = 0;
+  // Example of a custom method...
+  public function caramelize()
+  {
+    $this->calories *= 2; // Same as... $this->calories = $this->calories * 2;
+  }
 
-     // Declare Method (Constructor, runs every time and makes a new instance of this class.)
-     function __construct ( $snackName = '', $snackType = '', $snackPrice = 0.00, $snackCalories = 0.00 )
-     {
-        $this->name = $snackName;
-        $this->type = $snackType;
-        $this->price = number_format( $snackPrice,
-        2,      // Decimal Places
-        '.',    // Decimal Separator
-        ','     // Thousands Separator. 
-         );
-        $this->calories = intval ($snackCalories);
+  public function output()
+  { // Remember, anything OUTSIDE of PHP tags is echo'd!
+    // This means the below will be output WhEN this method is called!
+    ?>
+      <dl>
+        <dt>Snack Name</dt>
+        <dd><?php echo $this->name; ?></dd>
+        <dt>Snack Type</dt>
+        <dd><?php echo $this->type; ?></dd>
+        <dt>Snack Price</dt>
+        <dd><?php echo $this->price; ?></dd>
+        <dt>Snack Calories</dt>
+        <dd><?php echo $this->calories; ?></dd>
+      </dl>
+    <?php
+  }
+}
 
-     }   
+// Initialize a Snack object, pass arguments to __construct.
+// $mySnack = new Snack( 'Oh Henry', 'chocolate', 1.895555, "200.907" );
+// var_dump( $mySnack );
 
-     public function caramelize()
-     {
-         $this->calories *= 2;
-     }
+// // Run a method from the object. We use the "->" arrow for this.
+// $mySnack->caramelize();
+// var_dump( $mySnack );
 
- }
-
-$mySnack = new Snack( 'Oh Henry', 'Chocolate', 1.799999, 200.7 );
-var_dump( $mySnack ); 
-
-$mySnack->caramelize();
-var_dump( $mySnack ); 
-
-?>
+// // Let's try outputting our snack...
+// $mySnack->output();
