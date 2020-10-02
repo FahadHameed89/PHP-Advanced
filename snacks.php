@@ -2,7 +2,7 @@
 session_start();
 
 // Global Variables are stored in PHP's $GLOBALS array...
-$GLOBALS['pageTitle'] = 'Snacks!';
+$GLOBALS['pageTitle'] = 'Snacks';
 
 // Show the Header
 include './templates/header.php';
