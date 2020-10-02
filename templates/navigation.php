@@ -7,5 +7,8 @@
         <li>
             <a href="calc.php"> Calculator</a>
         </li>
+        <li>
+            <a href="snacks.php"> Snacks! (Object Oriented Programming - OOP)</a>
+        </li>
     </ul>
 </nav>
