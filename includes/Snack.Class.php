@@ -22,11 +22,21 @@
         '.',    // Decimal Separator
         ','     // Thousands Separator. 
          );
-        $this->calories = $snackCalories;
+        $this->calories = intval ($snackCalories);
 
      }   
+
+     public function caramelize()
+     {
+         $this->calories *= 2;
+     }
+
  }
 
-$mySnack = new Snack( 'Oh Henry', 'Chocolate', 1.799999, 200 );
+$mySnack = new Snack( 'Oh Henry', 'Chocolate', 1.799999, 200.7 );
 var_dump( $mySnack ); 
+
+$mySnack->caramelize();
+var_dump( $mySnack ); 
+
 ?>
