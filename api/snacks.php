@@ -17,10 +17,20 @@ if ( isset( $_GET['search'] ) && !empty( $_GET['search'] ) )
 { // Success
   // echo "{\"response\":\"Search term: {$_GET['search']}\"}";
   // Retrieve the list of snacks. 
- $snacksJSONString =   file_get_contents(
-     '../data/snacks.json'
- );
- echo $snacksJSONString;
+    $snacksJSONString =   file_get_contents( '../data/snacks.json' );
+    // echo $snacksJSONString; <-- Testing the output
+    // Check if we were able to read the file!
+    if ( $snacksJSONString )
+    {
+        // If we found it
+        
+    }
+    else
+    {
+        // If we fucked up
+        echo "{\"response\":\"ERROR: Unable to retrieve snacks list.\"}";
+
+    }
 }
 // If there is no search present, a default / fall-back response.
 else
