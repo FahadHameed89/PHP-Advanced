@@ -1,23 +1,29 @@
-<?php 
+<?php
 /**
  * Goal: Return a JSON representation of a Snack.
- * Parameter: "search" term.
- * Accept a search term in a GET request, and output a JSON representation of the Snack of our choosing.
+ * Parameter: Query parameter string "search" term.
  */
 
- // Header are sent "under the rader" to give additional information about the request/response. In this case we are describing the file-type or how we intend the content body string to be read.
- header( 'Content-type: app/JSON; charset=UTF-8');
+// Headers are sent "under-the-radar" to give additional info
+// about the request / response. In this case, we are
+// describing the "file-type" or how we intend the content body
+// / string to be read / treated.
+header( 'Content-type: app/JSON; charset=UTF-8' );
 
 
- // First lets make sure there is a search term present!
- if ( isset( $_GET['search'] ) && $empty( $_GET['search'] ) )
- { // JSON object response with the search term via the $_GET global array.
-    echo "{\"response\":\"Search term: {$_GET['search']}\"}";
- }
- // If there is no search present / fallback response..
- else 
- { // JSON object response w/ status info
-    echo "{\"response\":\"ERROR: No search term!\"}";
- }
 
- 
+// Search Term
+if ( isset( $_GET['search'] ) && !empty( $_GET['search'] ) )
+{ // Success
+  // echo "{\"response\":\"Search term: {$_GET['search']}\"}";
+  // Retrieve the list of snacks. 
+ $snacksJSONString =   file_get_contents(
+     '../data/snacks.json'
+ );
+ echo $snacksJSONString;
+}
+// If there is no search present, a default / fall-back response.
+else
+{ // Failure
+  echo "{\"response\":\"ERROR: No search term present.\"}";
+}
