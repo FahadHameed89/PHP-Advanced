@@ -23,16 +23,28 @@ if ( isset( $_GET['search'] ) && !empty( $_GET['search'] ) )
     if ( $snacksJSONString !== FALSE )
     {
         // If we found it
-        $snacksArray = json_decode ( $snacksJSONString ); 
-        if ( $snacksArray !== NULL )
+        $snacksList = json_decode ( $snacksJSONString ); 
+        if ( $snacksList !== NULL )
         {
             // If we got the snack list
+            $matchingSnacks = array(); // Array for storing matches
+            foreach ( $snacksList as $snack )
+            { // Check for a match in our snack name vs search. 
+                if ( stristr( $snack[0], $_GET['search'] ) )
+                    {
+                        array_push( $matchingSnacks, $snack );
+                    }
+            }
+            // Check if there were any matches!
+            if ( !empty ($matchingSnacks ) )
+            {   // Respond with the matching snacks array!
+                echo json_encode ( $matchingSnacks );
+            }
         }
         else 
         {
             // If we fucked up
             echo "{\"response\":\"ERROR: Unable to convert the Snacks list from JSON.\"}";
-
         }
 
     }
@@ -40,7 +52,6 @@ if ( isset( $_GET['search'] ) && !empty( $_GET['search'] ) )
     {
         // If we fucked up
         echo "{\"response\":\"ERROR: Unable to retrieve snacks list.\"}";
-
     }
 }
 // If there is no search present, a default / fall-back response.
