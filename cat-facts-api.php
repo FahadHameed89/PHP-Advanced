@@ -28,7 +28,7 @@ if ( $dailyCatFactResponse ) {
 <?php
 
 // Lets make a request to include a query parameter string.
-$factsListResponse = file_get_contents ( 'https://cat-fact.herokuapp.com/facts/random?amount=10&animal_type=dog' );
+$factsListResponse = file_get_contents ( "https://cat-fact.herokuapp.com/facts/random?amount={$_POST['amount']}&animal_type={$_POST['type']}" );
 var_dump ($factsListResponse);
 
 
