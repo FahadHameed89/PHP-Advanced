@@ -55,6 +55,12 @@ if ( isset( $_POST['amount'] ) && isset( $_POST['type'] ) )
         <?php echo ucfirst( $_POST['type'] ); // Show TYPE of facts! ?>
         Facts
       </h2>
+      <?php if (is_object( $factsList) ) : ?>
+        <ol>
+        <li> <?php echo $factsList->text; ?>
+        </li>
+        </ol>
+      <?php elseif ( !empty( $factsList ) ) : ?>
       <ol>
         <?php foreach ( $factsList as $fact ) : ?>
           <li>
@@ -62,6 +68,9 @@ if ( isset( $_POST['amount'] ) && isset( $_POST['type'] ) )
           </li>
         <?php endforeach; ?>
       </ol>
+        <?php else: ?>
+            <p>You requested Zero Facts! What is wrong with you?!</p>
+        <?php endif; ?>
     <?php
   }
 }
