@@ -14,6 +14,26 @@ if ( $dailyCatFactResponse ) {
 <?php 
 }
 ?>
+<h2>Request Animal Facts</h2>
+
+<form action="#" method="POST">
+    <label for="amount"> Enter the amount of Facts you need...
+    <input type="number" id="amount" name="amount"></label>
+    <label for="animal-type"> Enter the Type of Animal:
+    <input type="text" id="animal-type" name="type">
+    </label>
+    <input type="submit" value="Get Facts">
+</form>
+
+<?php
+
+// Lets make a request to include a query parameter string.
+$factsListResponse = file_get_contents ( 'https://cat-fact.herokuapp.com/facts/random?amount=10&animal_type=dog' );
+var_dump ($factsListResponse);
+
+
+
+?>
 
 <?php // Show the Footer
 include './templates/footer.php';
