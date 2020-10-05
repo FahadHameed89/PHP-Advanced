@@ -20,10 +20,21 @@ if ( isset( $_GET['search'] ) && !empty( $_GET['search'] ) )
     $snacksJSONString =   file_get_contents( '../data/snacks.json' );
     // echo $snacksJSONString; <-- Testing the output
     // Check if we were able to read the file!
-    if ( $snacksJSONString )
+    if ( $snacksJSONString !== FALSE )
     {
         // If we found it
-        
+        $snacksArray = json_decode ( $snacksJSONString ); 
+        if ( $snacksArray !== NULL )
+        {
+            // If we got the snack list
+        }
+        else 
+        {
+            // If we fucked up
+            echo "{\"response\":\"ERROR: Unable to convert the Snacks list from JSON.\"}";
+
+        }
+
     }
     else
     {
