@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack Search (AJAX + API)</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script type="text/JavaScript" src="js/scripts.js" defer></script>
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+
+<!-- Load Babel. -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<!-- Our React Script -->
+    <script type="text/jsx" src="js/react-example.js" defer></script>
+
 
 </head>
 <body>
@@ -34,25 +45,10 @@
             </ul>
         </nav>
 
-<p> This is the Snack Search Page!</p>
+<p> This is the Snack Search (Built with a React Component) Page!</p>
 
-<form id="search-form">
-    <label for="search-input">
-        Name of Snack
-        <input 
-        id=search-input
-        name="search"
-        type="search">
-    </label>
-    <input
-    value="Search Snacks"
-    type="submit">
-</form>
-
-<h3>Snack Search Results</h3>
-
-<ul id="search-results"></ul>
-
+<!-- Element that we want to use for React-->
+<section id="react-root"></section>
 
 <footer>
     <h2>Footer Details</h2>

@@ -9,10 +9,7 @@ include './templates/header.php';
 ?>
 
 <p> 
-    This is the 
-    
-    <?php echo $GLOBALS['pageTitle']; ?> 
-    Page!
+    This is the <?php echo $GLOBALS['pageTitle']; ?> Page!
 </p>
 
 
