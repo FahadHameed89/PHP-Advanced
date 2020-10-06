@@ -4,7 +4,13 @@
 const reactRoot = document.getElementById( 'react-root' );
 
 // Search Form Component
+
 const SearchForm = props => {
+    // UseState + OnChange can keep track of a changing state (In our case, the search bar)
+
+    const [search, setSearch] = React.useState( '' );
+
+    // Renders the component
     return (
         <React.Fragment>
         <h2>Snack Search Form</h2>
@@ -14,8 +20,10 @@ const SearchForm = props => {
                 <input
                     type="search"
                     id="search"
+                    onChange={event => { setSearch( event.target.value ) } }
+                    value={ search }
                 />
-            </label>
+            </label> 
             <input 
                 type="submit"
                 value="Search Snacks" 
