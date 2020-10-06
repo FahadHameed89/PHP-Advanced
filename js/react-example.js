@@ -10,11 +10,18 @@ const SearchForm = props => {
 
     const [search, setSearch] = React.useState( '' );
 
+    // Handle search submit. 
+    const submitSearch = event => {
+        // Prevents the form from submitting the old way
+        event.preventDefault();
+        console.log( 'Form Submitted!' );
+    }
+
     // Renders the component
     return (
         <React.Fragment>
         <h2>Snack Search Form</h2>
-        <form>
+        <form onSubmit={submitSearch}>
             <label htmlFor="search">
                 Enter a Search Term:
                 <input
