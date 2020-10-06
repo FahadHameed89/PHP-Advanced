@@ -14,7 +14,12 @@ const SearchForm = props => {
     const submitSearch = event => {
         // Prevents the form from submitting the old way
         event.preventDefault();
-        console.log( 'Form Submitted!' );
+       // console.log( 'Form Submitted!' );
+       fetch( `http://localhost:3000/api/snacks.php?search=${search}` )
+        .then (response => response.json() )
+        .then ( results => {
+            console.log( results );
+        } )
     }
 
     // Renders the component
