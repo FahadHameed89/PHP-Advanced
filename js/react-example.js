@@ -9,6 +9,9 @@ const SearchForm = props => {
     // UseState + OnChange can keep track of a changing state (In our case, the search bar)
 
     const [search, setSearch] = React.useState( '' );
+    // Snacks / Search result array state.
+    const [snacks, setSnacks] = React.useState( [] );
+
 
     // Handle search submit. 
     const submitSearch = event => {
@@ -18,8 +21,11 @@ const SearchForm = props => {
        fetch( `http://localhost:3000/api/snacks.php?search=${search}` )
         .then (response => response.json() )
         .then ( results => {
-            console.log( results );
+            // console.log( results );
+            // Update snacks array (state ) with new results from array.
+            setSnacks( results );
         } )
+        .catch ( error => { throw error } );
     }
 
     // Renders the component
@@ -42,7 +48,21 @@ const SearchForm = props => {
             />
         </form>
         <h3>Snack Search Results</h3>
-        <ul></ul>
+        <ul>
+            {snacks.map( ( snack, index ) => (
+                <li key={index}>
+                    <h4>{snack[0]}</h4>
+                    <dl>
+                        <dt>Snack Type:</dt>
+                        <dd>{snack[1]}</dd>
+                        <dt>Snack Price:</dt>
+                        <dd>${parseFloat(snack[2] ).toFixed( 2 ) }  </dd>
+                        <dt>Snack Calories:</dt>
+                        <dd>{snack[3]}</dd>
+                    </dl>
+                </li>
+            ))}
+        </ul>
         </React.Fragment>
     );
 }
